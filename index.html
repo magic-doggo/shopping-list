@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 13px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+      const unorderedList = document.querySelector("ul");
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+     
+      //when button clicked, run buttonClicked function
+      button.addEventListener("click", buttonClicked);
+    
+      //store input value in myItem and clear the input value field. can set it to default to anything
+      function buttonClicked() {
+        let myItem = input.value;
+        input.value = "";
+
+      const listItem = document.createElement("li");
+      const listText = document.createElement("span");
+      const listBtn = document.createElement("button");
+
+      listItem.appendChild(listText);
+      listItem.appendChild(listBtn);
+      
+      listText.textContent = myItem;
+      listBtn.textContent = "Delete";
+
+      unorderedList.appendChild(listItem);
+
+      listBtn.addEventListener ("click", deleteButtonCLicked);
+      function deleteButtonCLicked() {
+        unorderedList.removeChild(listItem);
+      }
+
+      input.focus();
+    }
+    </script>
+  </body>
+</html>
